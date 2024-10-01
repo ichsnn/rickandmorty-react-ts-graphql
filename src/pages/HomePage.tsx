@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import CharacterGridCard from "../components/CharacterGridCard";
 import ChipButton from "../components/ChipButton";
 import EpisodeCard from "../components/EpisodeCard";
@@ -24,10 +25,6 @@ function HomePage() {
     fetchNextPage: episodeFetchNextPage,
     hasNextPage: episodeHasNextPage,
   } = useGetListOfEpisodes(searchEpisodeName, searchEpisodeNumber);
-
-  useEffect(() => {
-    console.log(episodesData);
-  }, [episodesData]);
 
   const {
     data: charactersData,
@@ -111,7 +108,15 @@ function HomePage() {
           </div>
 
           {listToDisplay === "characters" && (
-            <div>
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 60,
+                damping: 20,
+              }}
+            >
               <form
                 onSubmit={(e) => e.preventDefault()}
                 className="mb-6 flex gap-2"
@@ -139,11 +144,19 @@ function HomePage() {
                 </p>
               )}
               {isFetchingCharacters && <LoadingComponent />}
-            </div>
+            </motion.div>
           )}
 
           {listToDisplay === "episodes" && (
-            <div>
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 60,
+                damping: 20,
+              }}
+            >
               <form
                 className="mb-6 flex flex-wrap md:flex-nowrap gap-4 md:gap-2"
                 onSubmit={(e) => e.preventDefault()}
@@ -174,7 +187,7 @@ function HomePage() {
                 </p>
               )}
               {isFetchingEpisodes && <LoadingComponent />}
-            </div>
+            </motion.div>
           )}
         </MainLayout>
       </div>

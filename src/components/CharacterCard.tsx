@@ -11,6 +11,7 @@ export default function CharacterCard({ character }: CharacterCardProps) {
         src={character?.image}
         alt={character?.name}
         className="w-full aspect-square"
+        draggable={false}
       />
       <div className="flex-1 p-5">
         <div className="flex justify-be gap-2 mb-3">

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Episode } from "../types/Episode";
 
 interface EpisodeCardProps {
@@ -7,7 +8,12 @@ interface EpisodeCardProps {
 
 export default function EpisodeCard({ episode }: EpisodeCardProps) {
   return (
-    <div className="p-5 border bg-white border-slate-500 rounded-xl shadow-[10px_10px_0px_0px_#000000]">
+    <motion.div
+      className="p-5 border bg-white border-slate-500 rounded-xl shadow-[10px_10px_0px_0px_#000000]"
+      initial={{ opacity: 0, y: 10, scale: 0.9 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ ease: "easeIn", duration: 0.5 }}
+    >
       <div>
         <div className="flex gap-4 items-center mb-3">
           <p className="font-semibold text-white text-xl bg-slate-500 rounded-full w-[4ch] aspect-square flex justify-center items-center">
@@ -36,6 +42,6 @@ export default function EpisodeCard({ episode }: EpisodeCardProps) {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
