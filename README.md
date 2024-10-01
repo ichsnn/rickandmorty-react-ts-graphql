@@ -1,7 +1,3 @@
-Here's the revised README with official links added to the technologies used:
-
----
-
 # Rick and Morty Series - React + TypeScript + Vite + GraphQL
 
 ## Features Overview
